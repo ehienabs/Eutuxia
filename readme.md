@@ -20,7 +20,7 @@ Prometheus and Grafana, installed with Helm, is tasked with observability for th
 [Istio](https://istio.io/) is used to power service to service communication. Envoy proxies are automatically injected as sidecars into our pods by labelling our name space with`istio-injection=enabled`.
 
 ## The Infrastructure<a name = "infra"></a>
-Our applications will be managed in a Kubernetes cluster. Two buckets; an upload bucket where users can upload their videos, and a download bucket where videos already processed will be store for sharing.
+Our applications will be managed in a Kubernetes cluster. Two buckets; an upload bucket where users can upload their videos, and a download bucket where videos already processed will be stored for sharing will be the cover our infrastructure needs.
 Our infrastructure will be hosted on Google Cloud platform.
 [Crossplane](https://crossplane.io/)  provides custom resource definitions that allow us provision our infrastructure as Kubernetes objects that we can manage, version control, maintain and reconcile. 
 
