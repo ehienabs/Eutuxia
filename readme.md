@@ -32,7 +32,7 @@ Our infrastructure will be hosted on Google Cloud platform.
 + [Helm](https://helm.sh/docs/intro/install/)
 
 ### Getting started with Crossplane
-Crossplane can be [installed](https://cloud.google.com/sdk/docs/install) using helm from the official repository.
+Crossplane can be [installed](https://artifacthub.io/packages/helm/crossplane/crossplane) using helm from the official repository.
 After the installation, crossplane interacts with our cloud apis by installing the necessary cloud provider and allowing it the right permissions using a  [service account](https://cloud.google.com/iam/docs/creating-managing-service-accounts). 
 
 ### Usage
