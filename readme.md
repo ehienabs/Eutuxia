@@ -26,7 +26,7 @@ Our infrastructure will be hosted on Google Cloud platform.
 
 ### Prerequisites
 
-+ A k8s cluster (management cluster from where our operations will be performed)
++ Mgnt-cluster (management cluster from where our operations will be performed)
 + A [Google Cloud Account](https://cloud.google.com/)
 + [gcloud](https://cloud.google.com/sdk/docs/install) sdk installed
 + [Helm](https://helm.sh/docs/intro/install/)
