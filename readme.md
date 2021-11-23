@@ -49,7 +49,8 @@ Using a Git as a single source of truth, Gitops uses pull requests to automate i
 + [Kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for the workload cluster
 + [Git](https://git-scm.com/downloads)
 + [ArgoCD Cli](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
-+ [Istio](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/)
++ [Istio](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/) in the workload cluster
++ [Github](https://github.com/)
 
 ### Getting started with ArgoCD
 ArgoCD can be [installed](https://artifacthub.io/packages/helm/argo/argo-cd) using helm. After [logging in](https://github.com/argoproj/argo-cd/blob/master/docs/getting_started.md), to use a remote repository like Github, ArgoCD access is [configured](https://cloud.redhat.com/blog/how-to-use-argocd-deployments-with-github-tokens) using the *argo-cm.yml* configmap.
