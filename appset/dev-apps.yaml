@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: eutuxia
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/ehienabs/eutuxia.git
+      revision: HEAD
+      directories:
+      - path: apps/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/ehienabs/eutuxia.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        name: eutuxia-cluster
+        namespace: development
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true  

@@ -1,0 +1,89 @@
+---
+apiVersion: storage.gcp.crossplane.io/v1alpha3
+kind: Bucket
+metadata:
+  name: upload-bkt
+  labels:
+    env: "dev"
+    type: "upload"
+  annotations:
+    crossplane.io/external-name: eutuxia-upload-bucket
+spec:
+  location: US
+  storageClass: MULTI_REGIONAL
+  deletionPolicy: Delete
+
+
+---
+apiVersion: storage.gcp.crossplane.io/v1alpha3
+kind: Bucket
+metadata:
+  name: download-bkt
+  labels:
+    env: "dev"
+    type: "upload"
+  annotations:
+    crossplane.io/external-name: eutuxia-download-bucket
+spec:
+  location: US
+  storageClass: MULTI_REGIONAL
+  deletionPolicy: Delete  
+
+
+
+---
+apiVersion: container.gcp.crossplane.io/v1beta2
+kind: Cluster
+metadata:
+  name: eutuxia-cluster
+spec:
+  forProvider:
+    location: us-central1
+    initialClusterVersion: "1.20"
+
+
+---
+apiVersion: container.gcp.crossplane.io/v1beta1
+kind: NodePool
+metadata:
+  name: eutuxia-cluster-np
+spec:
+  forProvider:
+    autoscaling:
+      autoprovisioned: false
+      enabled: true
+      maxNodeCount: 5
+      minNodeCount: 3 
+    clusterRef:
+      name: eutuxia-cluster
+    initialNodeCount: 3 
+    config:
+      machineType: n1-standard-1
+    locations:
+      - "us-central1-a"     
+
+
+---
+apiVersion: container.gcp.crossplane.io/v1beta1
+kind: NodePool
+metadata:
+  name: eutuxia-cluster-np2
+  labels:
+    cputype: gpu
+spec:
+  forProvider:
+    autoscaling:
+      autoprovisioned: false
+      enabled: true
+      maxNodeCount: 5
+      minNodeCount: 3 
+    clusterRef:
+      name: eutuxia-cluster
+    initialNodeCount: 1 
+    config:
+      machineType: a2-highgpu-1g
+      accelerators:
+        acceleratorCount: 3
+        acceleratorType: nvidia-tesla-t4
+    locations:
+      - "us-central1-a"    

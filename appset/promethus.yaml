@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    name: eutuxia-cluster
+    namespace: default
+  project: default
+  source:
+    chart: prometheus
+    helm:
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 13.0.2
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis-db
+  namespace: development
+  labels:
+    app: redisdb
+    env: dev
+spec:
+  selector:
+    matchLabels:
+      app: redisdb
+  replicas: 3
+  updateStrategy:
+    type: RollingUpdate
+  serviceName: redis-hl-service
+  podManagementPolicy: OrderedReady
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        labels: {}
+        annotations: {}
+        name: redis-vol
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 30Gi
+        storageClassName: premium-rwo
+        volumeMode: Block
+  template:
+    metadata:
+      labels:
+        app: redisdb
+        env: dev
+    spec:
+      containers:
+        - name: redis-db
+          image: redis
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: redis-port
+              containerPort: 6379
+              protocol: TCP
+          securityContext:
+            allowPrivilegeEscalation: false
+      #securityContext:
+        #runAsNonRoot: true

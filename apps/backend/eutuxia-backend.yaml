@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: development
+  labels:
+    app: backend
+    env: dev
+spec:
+  selector:
+    matchLabels:
+      app: backend
+      env: dev
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 2
+  template:
+    metadata:
+      labels:
+        app: backend
+        env: dev
+    spec:
+       volumes:
+        - name: backend-volume-1
+          persistentVolumeClaim:
+            claimName: backend-volume
+       containers:
+        - name: nginx2
+          image: nginxinc/nginx-unprivileged
+          imagePullPolicy: Always
+          ports:
+            - name: nginx
+              containerPort: 8082
+              protocol: TCP
+          volumeMounts:
+            - name: backend-volume-1
+              mountPath: /usr/share/nginx/html
+          securityContext:
+              allowPrivilegeEscalation: false    
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 100m
+            limits:
+              memory: 128Mi
+              cpu: 500m
+       nodeSelector:
+           cputype: gpu           
+       securityContext:
+        runAsNonRoot: true
+        runAsUser: 1002
