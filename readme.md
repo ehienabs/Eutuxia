@@ -20,7 +20,7 @@ Prometheus and Grafana, installed with Helm, is tasked with observability for th
 [Istio](https://istio.io/) is used to power service to service communication. Envoy proxies are automatically injected as sidecars into our pods by labelling our name space with`istio-injection=enabled`.
 
 ## The Infrastructure<a name = "infra"></a>
-Our applications will be managed in a Kubernetes cluster. Two buckets; an upload bucket where users can upload their videos, and a download bucket where videos already processed will be stored for sharing will be the cover our infrastructure needs.
+Our applications will be managed in a Kubernetes cluster. Two buckets; an upload bucket where users can upload their videos, and a download bucket where videos already processed will be stored for sharing will cover our infrastructure needs.
 Our infrastructure will be hosted on Google Cloud platform.
 [Crossplane](https://crossplane.io/)  provides custom resource definitions that allow us provision our infrastructure as Kubernetes objects that we can manage, version control, maintain and reconcile. 
 
@@ -53,7 +53,7 @@ Using a Git as a single source of truth, Gitops uses pull requests to automate i
 + [Github](https://github.com/)
 
 ### Getting started with ArgoCD
-ArgoCD can be [installed](https://artifacthub.io/packages/helm/argo/argo-cd) using helm. After [logging in](https://github.com/argoproj/argo-cd/blob/master/docs/getting_started.md), to use a remote repository like Github, ArgoCD access is [configured](https://cloud.redhat.com/blog/how-to-use-argocd-deployments-with-github-tokens) using the *argo-cm.yml* configmap.
+ArgoCD can be [installed](https://artifacthub.io/packages/helm/argo/argo-cd) using helm. After [logging in](https://github.com/argoproj/argo-cd/blob/master/docs/getting_started.md), to use a remote repository like Github, ArgoCD's access is [configured](https://cloud.redhat.com/blog/how-to-use-argocd-deployments-with-github-tokens) using the *argo-cm.yml* configmap.
 Add a workload cluster using `argocd  cluster  add  CONTEXT  --name `
 
 ### ArgoCD Apps
@@ -63,8 +63,8 @@ ArgoCD can monitor both git and helm repositories.
 ### Eutuxia Apps
 + [A Frontend](apps/frontend)
 + [A Backend](apps/backend)
-+ [Redis Datastore](app/redis)
-+ [Namespaces](app/namespaces)
++ [Redis Datastore](apps/redis)
++ [Namespaces](apps/namespaces)
 + [Prometheus](appset/promethus.yaml)
 + [Infra](infra)
 
