@@ -69,7 +69,7 @@ ArgoCD can monitor both git and helm repositories.
 + [Infra](infra)
 
 The Frontend, Backend, Redis Datastore and Namespaces (aka in-house applications) are packaged as part of an [appset](https://blog.argoproj.io/introducing-the-applicationset-controller-for-argo-cd-982e28b62dc5).
-Appset provides a template with autogenerates ArgoCD apps based on a number of rules. Here, the appset generates apps based on directory structure. This encourages flexibility in our team as it grows.
+Appset provides a template which autogenerates ArgoCD apps based on a number of rules. Here, the appset generates apps based on directory structure. This encourages flexibility in our team as it grows.
 Prometheus being open sourced and installed from a helm repo, and Infra being owned by another team, are managed independently for proper separation of duties.
 Finally, a superapp —bigapp, monitors all the apps.
 
