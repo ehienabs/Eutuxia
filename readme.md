@@ -40,8 +40,8 @@ Runing `kubectl apply` against [eutuxia-infra.yaml](infra/eutuxia-infra.yaml) fi
 Each resource living as a k8s object that can be queried, modified, versioned, and managed by a reconcilatory loop, right in our cluster.
 
 ## The Deployment<a name = "deploy"></a>
-Eutuxia's infrastructure being provisioned declaratively, as well as her application configurations, takes advantage of [GitOps](https://www.redhat.com/en/topics/devops/what-is-gitops/).
-Using a Git as a single source of truth, Gitops uses pull requests to automate infrastructure and applications provisioning and deployment.
+Eutuxia's infrastructure being provisioned declaratively, as well as her application configurations, means we can advantage of [GitOps](https://www.redhat.com/en/topics/devops/what-is-gitops/) best practices.
+Using Git as a single source of truth, Gitops uses pull requests to automate infrastructure and applications provisioning and deployment.
 [ArgoCD](https://blog.argoproj.io/introducing-argo-cd-declarative-continuous-delivery-for-kubernetes-da2a73a780cd) is a custom resource definition that leverages K8s reconcilatory loops capabilities to sync the desired state — as specified in a git or helm repository, and the live state.
 
 ### Prerequisites
