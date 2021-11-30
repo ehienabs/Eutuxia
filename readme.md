@@ -1,6 +1,6 @@
 
 # **EUTUXIA**
-## Table of Contents
+## Table of Content
 + [About](#about)
 + [The Applications](#application)
 + [The Infrastructure](#infra)
